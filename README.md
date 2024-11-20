@@ -19,4 +19,4 @@ This is my new django proj.
     e) written orm query in views.py. To add post data to table. 
 13) created a dismissible prompt using bootstarp to show error/success/warning/info prompts.
     Used django message templates. 
-
+14) Active(highlight) tab from breadcrumb when pressed.
