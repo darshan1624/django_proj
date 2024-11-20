@@ -17,4 +17,6 @@ This is my new django proj.
     c) Registered app in settings installed apps. (other wise migration file wont be created).
     d) Register app in admin.py file. (so, that we can view model via admin page).
     e) written orm query in views.py. To add post data to table. 
+13) created a dismissible prompt using bootstarp to show error/success/warning/info prompts.
+    Used django message templates. 
 
