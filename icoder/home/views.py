@@ -3,11 +3,14 @@ from home.models import Contact
 from icoder.settings import TEMPLATES
 import os
 from django.contrib import messages
+from blog.models import Post
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'home/home.html')
+    all_blogs = Post.objects.all()
+    params = {'popular_blogs': all_blogs[:2]}
+    return render(request, 'home/home.html', params)
 
 
 def contact(request):

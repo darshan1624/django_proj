@@ -20,3 +20,7 @@ This is my new django proj.
 13) created a dismissible prompt using bootstarp to show error/success/warning/info prompts.
     Used django message templates. 
 14) Active(highlight) tab from breadcrumb when pressed.
+15) Created a Home page (for home app) and blogHome (for blogapp). 
+    Created a model Post which will store blog data. Register model in settings.py 
+    Ftech data from db to Home and blogHome page.
+    
