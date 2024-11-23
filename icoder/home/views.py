@@ -37,3 +37,11 @@ def contact(request):
 
 def about(request):
     return render(request, 'home/about.html')
+
+def search(request):
+    if request.method == 'GET':
+        searchKeyword = request.GET.get('search', '')
+        fetched_blogs = Post.objects.all().filter(title__icontains=searchKeyword)
+
+    params = {'fetched_blogs':fetched_blogs}
+    return render(request, 'home/search.html', params)

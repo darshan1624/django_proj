@@ -9,4 +9,6 @@ def blogHome(request):
     return render(request, 'blog/blogHome.html', params)
 
 def blogPost(request, slug):
-    return render(request, 'blog/blogPost.html')
+    fetch_blog = Post.objects.filter(slug = slug)[0]
+    params = {'fetch_blog': fetch_blog}
+    return render(request, 'blog/blogPost.html', params)

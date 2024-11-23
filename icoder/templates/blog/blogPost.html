@@ -1,4 +1,14 @@
 {% extends 'base.html'%}
 
 {% block title %} BlogPost {% endblock%}
-{% block body %} BlogPost Page {% endblock%}
+{% block body %} 
+
+<div class="container my-4">
+    <h2 class="display-5 link-body-emphasis mb-1">{{fetch_blog.title}}</h2>
+    <p class="blog-post-meta">{{fetch_blog.created_at}}<a href="#"> By {{fetch_blog.author}}</a></p>
+
+    <p>{{fetch_blog.content}}</p>
+</div>    
+
+{% endblock%}
+

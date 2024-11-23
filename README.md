@@ -23,4 +23,9 @@ This is my new django proj.
 15) Created a Home page (for home app) and blogHome (for blogapp). 
     Created a model Post which will store blog data. Register model in settings.py 
     Ftech data from db to Home and blogHome page.
+16) Create admin pannel button on UI. Not necessary. 
+    Created blogPost page. When we click on any block we go to that specific blogPost page. 
+    Created search utility on UI. Copied blogPost html for search html page. 
+    Used titlt__icontains = 'keyword' filter in ORM query to get required blogs.
+
     
