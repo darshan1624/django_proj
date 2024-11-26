@@ -28,5 +28,5 @@ This is my new django proj.
     Created search utility on UI. Copied blogPost html for search html page. 
     Used title__icontains = 'keyword' filter in ORM query to get required blogs.
 17) Handled case when no blog is fetched via search or search query is too big. Implemented dismissible message. Include content__icontains = 'keyword'.  
-
+18) Created signup, Login button in nav bar. Used bootstrap modal. Inside modal created form. 
     

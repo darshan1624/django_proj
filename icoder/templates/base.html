@@ -29,11 +29,17 @@
                 <a class="nav-link" href="/contact">Contact</a>
               </li>
           </ul>
-          <form method = 'get' action='/search' class="form-inline my-2 my-lg-0">
+          <form method = 'get' action='/search' class="form-inline my-2 mx-4 my-lg-0">
             <input name='search' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
-          <a href="/admin" role="button" target="_blank" class="btn btn-outline-success my-2 my-sm-0 m-2">Admin Panel</a>
+          <a href="/admin" role="button" target="_blank" class="btn btn-success my-2 my-sm-0 m-2">Admin Panel</a>
+          <button type="button" class="btn btn-success mr-2 my-sm-0" data-toggle="modal" data-target="#LoginModal">
+            Login
+          </button>
+          <button type="button" class="btn btn-success mr-2 my-sm-0" data-toggle="modal" data-target="#SignupModal">
+            Signup
+          </button>
 
         </div>
       </nav>
@@ -46,6 +52,88 @@
         </button>
       </div>
       {% endfor %}
+
+
+    <!-- Button trigger Signup -->
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#SignupModal">
+      Launch demo modal
+    </button> -->
+
+    <!-- Signup -->
+    <div class="modal fade" id="SignupModal" tabindex="-1" role="dialog" aria-labelledby="SignupModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="SignupModalTitle">Signup here</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Signup Form -->
+            <form>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="email" class="form-control" id="username" name="username" placeholder="Username">
+              </div>
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="email" class="form-control" id="fname" name="fname" placeholder="First Name">
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="email" class="form-control" id="lname" name="lname" placeholder="Last Name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email address">
+              </div>
+              <div class="form-group">
+                <label for="pass1">Choose your Password</label>
+                <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose your Password">
+              </div>
+              <div class="form-group">
+                <label for="pass2">Confirm Password</label>
+                <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirm Password">
+              </div>
+              <button type="button" class="btn btn-primary">Signup</button>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login -->
+    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="LoginModalTitle">Login here</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Login Form -->
+            <form>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="email" class="form-control" id="username" name="username" placeholder="Username">
+              </div>
+              <div class="form-group">
+                <label for="pass">Password</label>
+                <input type="password" class="form-control" id="pass" name="pass" placeholder="Enter your Password">
+              </div>
+              <button type="button" class="btn btn-primary">Login</button>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>    
 
     {% block body %} {% endblock%}
 
