@@ -4,6 +4,7 @@ from icoder.settings import TEMPLATES
 import os
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 from blog.models import Post
 
 # Create your views here.
@@ -84,3 +85,26 @@ def handleSignup(request):
         
     else:
         return HttpResponse('404 - Not Found')
+
+
+def handleLogin(request):
+    if request.method == 'POST':
+        loginusername = request.POST.get('loginusername')
+        loginpassword = request.POST.get('loginpassword')
+
+        user = authenticate(username=loginusername, password = loginpassword)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Successfully Logged In")
+            return redirect('home')
+        else: 
+            messages.error(request, "Invalid Credentials, Please try again")
+            return redirect('home')
+    return HttpResponse('Login')
+
+def handleLogout(request):
+    if request.method == 'POST':
+        logout(request)
+        messages.success(request, "Successfully Logout")
+    return HttpResponse('Logout')
