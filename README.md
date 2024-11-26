@@ -29,4 +29,5 @@ This is my new django proj.
     Used title__icontains = 'keyword' filter in ORM query to get required blogs.
 17) Handled case when no blog is fetched via search or search query is too big. Implemented dismissible message. Include content__icontains = 'keyword'.  
 18) Created signup, Login button in nav bar. Used bootstrap modal. Inside modal created form. 
+19) Register user using signup. Used User model provided by django. Handled cases when user already exist and passwords (confirm - renter) donot match. 
     
