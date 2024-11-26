@@ -26,6 +26,7 @@ This is my new django proj.
 16) Create admin pannel button on UI. Not necessary. 
     Created blogPost page. When we click on any block we go to that specific blogPost page. 
     Created search utility on UI. Copied blogPost html for search html page. 
-    Used titlt__icontains = 'keyword' filter in ORM query to get required blogs.
+    Used title__icontains = 'keyword' filter in ORM query to get required blogs.
+17) Handled case when no blog is fetched via search or search query is too big. Implemented dismissible message. Include content__icontains = 'keyword'.  
 
     

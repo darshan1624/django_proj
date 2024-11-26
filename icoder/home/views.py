@@ -41,7 +41,16 @@ def about(request):
 def search(request):
     if request.method == 'GET':
         searchKeyword = request.GET.get('search', '')
-        fetched_blogs = Post.objects.all().filter(title__icontains=searchKeyword)
+        if len(searchKeyword) > 68 :
+            fetched_blogs = Post.objects.none()
+        else:
+            fetched_title = Post.objects.all().filter(title__icontains=searchKeyword)
+            fetched_content = Post.objects.all().filter(content__icontains=searchKeyword)
+            fetched_blogs = fetched_title.union(fetched_content)
 
-    params = {'fetched_blogs':fetched_blogs}
+        if fetched_blogs.count() < 1: 
+            messages.error(request, "No search result Found. Please refine your query!")
+        
+
+    params = {'fetched_blogs':fetched_blogs, 'query':searchKeyword}
     return render(request, 'home/search.html', params)

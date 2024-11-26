@@ -6,8 +6,19 @@
 
 <div class="container my-4">
   <h2>Search Results: </h2>
+  {% if  fetched_blogs|length < 1 %}
+  <p>Your search - <b>{{query}}</b> ... - did not match any documents.</p>
+
+  Suggestions:
+  <ul>
+    <li>Make sure that all words are spelled correctly.</li>
+    <li>Try different keywords.</li>
+    <li>Try more general keywords.</li>
+  </ul>
+
+  {% endif %}
   {% for blog in fetched_blogs %}
-    <div class="card-body d-flex flex-column align-items-star my-2">
+    <div class="card-body d-flex flex-column align-items-star my-4 table-bordered">
       <strong class="d-inline-block mb-2 text-primary">By {{blog.author}}</strong>
       <h3 class="mb-0">
         <a class="text-dark" href="/blog/{{blog.slug}}">{{blog.title}}</a>
