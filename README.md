@@ -31,3 +31,5 @@ This is my new django proj.
 18) Created signup, Login button in nav bar. Used bootstrap modal. Inside modal created form. 
 19) Register user using signup. Used User model provided by django. Handled cases when user already exist and passwords (confirm - renter) donot match. 
 20) Login user using login button. Used authenticate, login, logout functions provided by django. 
+21) Disappear Login,Signup button when logged in. Used user.is_authenticated() to now if user is aunthenticated. 
+    Created dropdown in navbar to see logout option. 

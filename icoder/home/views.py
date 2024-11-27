@@ -104,7 +104,6 @@ def handleLogin(request):
     return HttpResponse('Login')
 
 def handleLogout(request):
-    if request.method == 'POST':
-        logout(request)
-        messages.success(request, "Successfully Logout")
-    return HttpResponse('Logout')
+    logout(request)
+    messages.success(request, "Successfully Loggedout")
+    return redirect('home')
