@@ -33,3 +33,15 @@ This is my new django proj.
 20) Login user using login button. Used authenticate, login, logout functions provided by django. 
 21) Disappear Login,Signup button when logged in. Used user.is_authenticated() to now if user is aunthenticated. 
     Created dropdown in navbar to see logout option. 
+22) Customized Admin pannel little bit. Created a model BlogComments. User, Post field will be a foreign key and parent will be self foreign key. 
+23) Created a comments section under blogpost. 
+    Comments are realted to post, user, parent_comment(which means its a reply).
+    Created a model BlogComment with sno, comment, post, user, parent, timestamp. 
+    Written apis in views.py to fetch data from form (comment) and store it in model BlogComment.
+    Created a form (comment) to add comments in blogPost page. Import fields include comment, hidden(sno of post), submit.
+
+    Modified blogPost api to fetch comments of particular post. 
+    Modified blogPost page to view all comments.
+    Handled case when user is not autheticated to add comments. 
+    humanized time e.g.: 2 days ago, 2 hours ago
+    New things: Forignkey, anonomous user when user not aunthenticated.

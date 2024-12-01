@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+{% load humanize %}
 
 {% block title %} BlogPost {% endblock%}
 {% block body %} 
@@ -8,7 +9,35 @@
     <p class="blog-post-meta">{{fetch_blog.created_at}}<a href="#"> By {{fetch_blog.author}}</a></p>
 
     <p>{{fetch_blog.content}}</p>
-</div>    
+</div> 
+
+<div class="container">
+    <h2>Comments ({{comments.count}})</h4>
+    {% if user.is_authenticated %}
+    <form action="/blog/postComment/" method="POST">
+        <div class="form-group">
+        {% csrf_token %}
+          <label for="postComment">Enter Comment</label>
+          <input name="postComment" type="text" class="form-control" id="postComment" placeholder="Enter your comment here.">
+          <input type="hidden" name="postSno" value="{{fetch_blog.sno}}">
+
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      {% else %}
+        <p> Please login to comment.</p>
+      {% endif %}
+
+
+    {% for comment in comments%}
+    <div class="row my-3">
+        <div class="col-md-1"><img src="/static/img/profile.png" class="img-fluid img-thumbnail" alt="profileImg"></div>
+        <div class="col-md-11"><b>{{comment.user|title}}</b> <small> {{comment.created_at | naturaltime }} </small>
+           <div> {{comment.comment}} </div>  
+        </div>
+    </div>
+    {% endfor %} 
+</div>
 
 {% endblock%}
 
