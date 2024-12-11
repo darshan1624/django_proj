@@ -3,6 +3,7 @@
 
 {% block title %} BlogPost {% endblock%}
 {% block body %} 
+{% load extras%}
 
 <div class="container my-4">
     <h2 class="display-5 link-body-emphasis mb-1">{{fetch_blog.title}}</h2>
@@ -18,7 +19,7 @@
         <div class="form-group">
         {% csrf_token %}
           <label for="postComment">Enter Comment</label>
-          <input name="postComment" type="text" class="form-control" id="postComment" placeholder="Enter your comment here.">
+          <input name="postComment" type="text" class="form-control" id="postComment" placeholder="Enter your comment here." required>
           <input type="hidden" name="postSno" value="{{fetch_blog.sno}}">
 
         </div>
@@ -34,6 +35,43 @@
         <div class="col-md-1"><img src="/static/img/profile.png" class="img-fluid img-thumbnail" alt="profileImg"></div>
         <div class="col-md-11"><b>{{comment.user|title}}</b> <small> {{comment.created_at | naturaltime }} </small>
            <div> {{comment.comment}} </div>  
+            
+           <p class='m-1'>
+            <button class="btn btn-primary btn-sm mb-0 " type="submit" data-toggle="collapse" data-target="#replyBtn{{comment.sno}}" aria-expanded="false" aria-controls="replyBtn{{comment.sno}}">
+              Reply
+            </button>
+          </p>
+
+          
+          <div class="collapse p-1" id="replyBtn{{comment.sno}}">
+            <div class="card card-body p-1">
+              
+              <form action="/blog/postComment/" method="POST">
+                <div class="form-group">
+                {% csrf_token %}
+                  <label for="replyComment">Reply to Comment</label>
+                  <input name="replyComment" type="text" class="form-control" id="replyComment" placeholder="Enter your comment here.">
+                  <input type="hidden" name="postSno" value="{{fetch_blog.sno}}">
+                  <input type="hidden" name="commentSno" value="{{comment.sno}}">
+
+        
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+
+
+            </div>
+          </div>
+
+          <div class="replies bg-danger my-2">
+            {% for reply in replyDict|get_val:comment.sno %}
+              {{reply}}
+              <br>
+            {% endfor %}
+
+          </div>
+
+
         </div>
     </div>
     {% endfor %} 

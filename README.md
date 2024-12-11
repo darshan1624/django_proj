@@ -45,3 +45,15 @@ This is my new django proj.
     Handled case when user is not autheticated to add comments. 
     humanized time e.g.: 2 days ago, 2 hours ago
     New things: Forignkey, anonomous user when user not aunthenticated.
+
+    Added collapse button using bootstarp for reply. 
+    submit form to submit reply same as comments.
+
+24) Created a dict containing parentSno and the replies that belong to it.
+    Created a custom template filter. replyDict|get_val:comment.sno
+    Here dict, key are the arguments replyDict|get_val:comment.sno and get_val is the function.
+    Created a folder templatetags inside blog app. Cretaed __init__.py folder inside it to consider this as package.
+    Also, created file extras.py inside it. This file had a function get_val.
+
+
+
