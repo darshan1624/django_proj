@@ -17,15 +17,16 @@ def blogPost(request, slug):
     replyDict = {}
     for reply in replies:
         if reply.parent.sno not in replyDict.keys():
-            replyDict[reply.parent.sno] = [reply.comment]
+            replyDict[reply.parent.sno] = [reply]
         else: 
-            replyDict[reply.parent.sno].append(reply.comment)
+            replyDict[reply.parent.sno].append(reply)
     user = request.user
     params = {'fetch_blog': fetch_blog, 'comments':comments, 'user':user, 'replyDict':replyDict}
     return render(request, 'blog/blogPost.html', params)
 
 def postComment(request):
     if request.method == 'POST': 
+        # find user 
         user = request.user
         postSno = request.POST.get('postSno')
         commentSno = request.POST.get('commentSno')

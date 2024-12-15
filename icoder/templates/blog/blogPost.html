@@ -32,10 +32,11 @@
 
     {% for comment in comments%}
     <div class="row my-3">
-        <div class="col-md-1"><img src="/static/img/profile.png" class="img-fluid img-thumbnail" alt="profileImg"></div>
+        <div class="col-md-1 "><img src="/static/img/profile.png" class="img-fluid img-thumbnail border-dark rounded" alt="profileImg"></div>
         <div class="col-md-11"><b>{{comment.user|title}}</b> <small> {{comment.created_at | naturaltime }} </small>
            <div> {{comment.comment}} </div>  
-            
+           {% if user.is_authenticated %}
+
            <p class='m-1'>
             <button class="btn btn-primary btn-sm mb-0 " type="submit" data-toggle="collapse" data-target="#replyBtn{{comment.sno}}" aria-expanded="false" aria-controls="replyBtn{{comment.sno}}">
               Reply
@@ -45,37 +46,42 @@
           
           <div class="collapse p-1" id="replyBtn{{comment.sno}}">
             <div class="card card-body p-1">
-              
               <form action="/blog/postComment/" method="POST">
                 <div class="form-group">
                 {% csrf_token %}
                   <label for="replyComment">Reply to Comment</label>
-                  <input name="replyComment" type="text" class="form-control" id="replyComment" placeholder="Enter your comment here.">
+                  <input name="replyComment" type="text" class="form-control" id="replyComment" placeholder="Enter your comment here." required>
                   <input type="hidden" name="postSno" value="{{fetch_blog.sno}}">
                   <input type="hidden" name="commentSno" value="{{comment.sno}}">
-
-        
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
-
-
             </div>
-          </div>
+            {% else %}
+            <button class="btn btn-primary btn-sm mb-0 " type="submit" data-toggle="collapse" data-target="#replyBtn{{comment.sno}}" aria-expanded="false" aria-controls="replyBtn{{comment.sno}}" disabled>
+              Login to reply.
+            </button>
+            {% endif %}
 
-          <div class="replies bg-danger my-2">
+          <div class="replies my-2">
             {% for reply in replyDict|get_val:comment.sno %}
-              {{reply}}
-              <br>
-            {% endfor %}
-
+            <div class="row">
+                <div class="col-md-1">
+                  <img src="/static/img/profile.png" class="img-fluid img-thumbnail border border-dark my-2" alt="profileImg">
+                </div>
+                
+                <div class="col-md-11">
+                  <b>{{reply.user|title}}</b> <small> {{reply.created_at | naturaltime }} </small>
+                  <div >{{reply.comment}}</div>
+                </div>
+            </div>
+            {% endfor %}  
           </div>
-
-
-        </div>
     </div>
-    {% endfor %} 
+  </div>
 </div>
+
+    {% endfor %}
 
 {% endblock%}
 

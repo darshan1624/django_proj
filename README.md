@@ -55,5 +55,7 @@ This is my new django proj.
     Created a folder templatetags inside blog app. Cretaed __init__.py folder inside it to consider this as package.
     Also, created file extras.py inside it. This file had a function get_val.
 
+25) Modified replies html on blogpost page. End.
+
 
 
